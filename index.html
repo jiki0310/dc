@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discordで開く</title>
+</head>
+<body>
+<p id="msg">Discordアプリを起動しています…</p>
+<p><a id="link" href="#">起動しない場合はここをクリック</a></p>
+<script>
+  var path = location.hash.slice(1); // 例: サーバーID/チャンネルID
+  if (/^(\d+|@me)\/\d+$/.test(path)) {
+    var url = "discord://-/channels/" + path;
+    document.getElementById("link").href = url;
+    location.href = url;
+  } else {
+    document.getElementById("msg").textContent = "URLの形式が正しくありません";
+  }
+</script>
+</body>
+</html>
